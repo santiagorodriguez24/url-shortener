@@ -8,7 +8,9 @@
     "install": "npm-run-all --parallel install-client",
     "start": "node server/index.js",
     "client": "cd client && npm start",
-    "dev": "npm-run-all --parallel nodemon client",
+    "build-client": "cd client && npm run build",
+    "local-start": "npm-run-all build-client start",
+    "dev": "npm-run-all --parallel start client",
     "nodemon": "nodemon server/index.js",
     "heroku-postbuild": "cd client && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
