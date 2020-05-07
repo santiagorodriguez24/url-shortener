@@ -1,0 +1,268 @@
+$view-port-height: 100vh;
+$view-port-width: 100vw;
+
+// smallest screen size (xs – extra small)
+$screen-xs-max: 576px;
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+// Tablets and small desktops
+$screen-lg-min: 992px;
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+// Xtra samll devices
+@mixin xs {
+  @media (max-width: #{$screen-xs-max}) {
+    @content;
+  }
+}
+
+// Small devices
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+.page {
+  background-color: #252525;
+  width: $view-port-width;
+  min-height: $view-port-height;
+  height: 100%;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  margin: 0px;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap !important;
+  text-align: center;
+}
+
+.card-container {
+  border: 0px;
+  min-height: calc(#{$view-port-height} - 10vh);
+  height: auto;
+  overflow: auto;
+  width: calc(#{$view-port-width} - 10vh);
+
+  .image-background {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    min-height: 40vh;
+    height: auto;
+    background-color: #252525;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    color: #ffffff;
+
+    .col-logo {
+      padding: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+
+      .logo {
+        padding-top: 30px;
+        max-width: 160px;
+        animation: skew 3s infinite;
+        animation-direction: alternate;
+      }
+
+      @keyframes skew {
+        0% {
+          transform: skew(20deg, 20deg);
+        }
+        100% {
+          transform: skew(-20deg, -20deg);
+        }
+      }
+    }
+
+    .col-title-input {
+      padding: 0px;
+      text-align: center;
+    }
+
+    .title {
+      flex-basis: 100%;
+      font-weight: 400;
+      line-height: 1.4;
+
+      @include md {
+        margin-top: 50px;
+      }
+    }
+
+    .subtitle {
+      @extend .title;
+      margin-top: 0px;
+    }
+
+    .input-group {
+      margin: 30px auto 0px;
+      width: 100%;
+      justify-content: center;
+
+      @include xs {
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      @include sm {
+        width: 95%;
+      }
+
+      @include xl {
+        width: 80%;
+      }
+    }
+
+    .shrink-button {
+      background-color: #f6435d;
+      color: #ffffff;
+      border-radius: 0.25rem;
+    }
+
+    .result-alert {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .close {
+        top: unset;
+      }
+    }
+  }
+
+  .top-five-container {
+    min-height: 50vh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #605c5c;
+
+    .top-five-title {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      flex-grow: 1;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .top-five-list {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      flex-grow: 1;
+      width: 60%;
+      margin: 0 auto;
+
+      @include xs {
+        width: 100%;
+      }
+
+      @include sm {
+        width: 75%;
+      }
+
+      @include xl {
+        width: 60%;
+      }
+
+      .top-five-item {
+        margin-top: 18px;
+        border-bottom: 1px solid #fff0f2;
+
+        .col-item {
+          display: flex;
+          justify-content: space-between;
+
+          .link {
+            text-decoration: none;
+            margin-right: 10px;
+            color: #605c5c;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+
+    .top-five-alert {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: #605c5c;
+    }
+
+    .footer-row {
+      display: flex;
+      flex: 1;
+      flex-grow: 1;
+      align-items: center;
+      padding: 0px 5px 20px;
+
+      .sign-col {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        .heart-emoji {
+          width: 18px;
+        }
+      }
+
+      .linkedin-col {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 30px;
+
+        .linkedin-logo {
+          width: 28px;
+        }
+      }
+    }
+  }
+}
