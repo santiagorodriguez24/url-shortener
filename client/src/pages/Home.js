@@ -35,9 +35,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        console.log('__dirname:  ', process.env.NODE_ENV);
-
-        const socket = socketIOClient('http://localhost:3001');
+        const socket = socketIOClient(process.env.REACT_APP_API_URL);
 
         socket.on('topFive', response => {
 
